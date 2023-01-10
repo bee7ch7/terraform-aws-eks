@@ -7,7 +7,6 @@ data "aws_eks_cluster" "this" {
 }
 
 provider "kubernetes" {
-  count = var.create ? 1 : 0
   host                   = data.aws_eks_cluster.this[0].endpoint
   cluster_ca_certificate = base64decode(data.aws_eks_cluster.this[0].certificate_authority.0.data)
 
