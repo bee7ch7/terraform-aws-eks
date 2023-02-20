@@ -2,7 +2,8 @@ data "aws_eks_cluster" "this" {
   count = var.create ? 1 : 0
   name = aws_eks_cluster.this[0].name
   depends_on = [
-    module.eks_managed_node_group
+    module.eks_managed_node_group,
+    aws_eks_cluster.this
   ]
 }
 
