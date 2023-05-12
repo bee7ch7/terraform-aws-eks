@@ -10,7 +10,7 @@ data "aws_eks_cluster" "this" {
 provider "kubernetes" {
 #   host                   = try(data.aws_eks_cluster.this[0].endpoint, "")
 #   cluster_ca_certificate = try(base64decode(data.aws_eks_cluster.this[0].certificate_authority.0.data), "")
-  config_path = "/home/runner/.kube/config"
+  config_path = "~/.kube/config"
 
   dynamic "exec" {
     for_each = var.create ? [1] : []
